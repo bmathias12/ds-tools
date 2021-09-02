@@ -83,22 +83,4 @@ sic_codes_2digit = {
     '96': 'Administration of Economic Programs',
     '97': 'National Security and International Affairs',
     '99': 'Nonclassifiable Establishments'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
