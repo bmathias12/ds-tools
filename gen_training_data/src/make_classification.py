@@ -3,6 +3,13 @@ from sklearn.datasets import make_classification
 
 
 class MakeClassification:
+    """Generate a classification dataset
+    
+    Attributes:
+        output_dir (str): Output directory
+        output_name (str): Name of the dataset
+        seed (int): Random seed
+    """
     def __init__(self, output_dir, output_name, seed):
         self.output_dir = output_dir
         self.output_name = output_name
@@ -39,6 +46,8 @@ class MakeClassification:
     def split(self, n_sets):
         """Split the dataset into train, validation, and test sets
         
+        Args:
+            n_sets (int): Number of sets to generate
         Returns:
             None
         """
