@@ -1,3 +1,18 @@
+"""
+Uses scikit-learn's make_classification to generate training data.
+
+Args:
+    output_dir (str): Output directory
+    output_name (str): Name of the dataset (will be prefix of the output files)
+    n_sets (int): Number of sets to generate (1, 2, or 3, for train, val, and test sets)
+    n_samples (int): Number of samples to generate
+    n_features (int): Number of features to generate
+    seed (int): Random seed
+
+Usage:
+    python gen_data.py -o /path/to/output_dir --output_name gen_ml_data --n_sets 1 -n 1000 -f 20 -s 123
+
+"""
 import argparse
 import os
 import tempfile
@@ -24,8 +39,8 @@ def main(output_dir, output_name, n_sets, n_samples, n_features, seed,):
 
     make_classification.split(n_sets=n_sets)
 
-    out_loc = os.path.join(output_dir, output_name)
-    print(out_loc)
+    # Write the sets to disk
+    make_classification.write()
 
 
 if __name__ == '__main__':

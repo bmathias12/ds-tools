@@ -1,3 +1,5 @@
+import os
+
 import pytest
 from src.make_classification import MakeClassification
 
@@ -21,3 +23,18 @@ def test_split_raises_error():
     mc = MakeClassification(output_dir='.', output_name='test', seed=42)
     with pytest.raises(ValueError):
         mc.split(n_sets=3)
+
+def test_write():
+    # Test that write() method writes the train, val, and test sets to disk
+    mc = MakeClassification(output_dir='.', output_name='test', seed=42)
+    mc.generate(n_samples=100, n_features=10, n_informative=5, n_redundant=2, n_repeated=1, n_classes=3)
+    mc.split(n_sets=3)
+    mc.write()
+    
+    assert os.path.isfile('./test_train.csv')
+    assert os.path.isfile('./test_val.csv')
+    assert os.path.isfile('./test_test.csv')
+    
+    os.remove('./test_train.csv')
+    os.remove('./test_val.csv')
+    os.remove('./test_test.csv')

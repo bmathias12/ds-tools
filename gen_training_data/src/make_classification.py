@@ -68,3 +68,20 @@ class MakeClassification:
             self.df_test = self.df.drop(self.df_train.index).drop(self.df_val.index)
         else:
             raise ValueError('n_sets must be 1, 2, or 3.')
+        
+    def write(self):
+        """Write the train, validation, and test sets to disk
+        
+        Args:
+            None
+        Returns:
+            None
+        """
+        if not hasattr(self, 'df_train'):
+            raise ValueError('Dataset has not been split yet. Run `split` method first.')
+        
+        self.df_train.to_csv(f'{self.output_dir}/{self.output_name}_train.csv', index=False)
+        if self.df_val is not None:
+            self.df_val.to_csv(f'{self.output_dir}/{self.output_name}_val.csv', index=False)
+        if self.df_test is not None:
+            self.df_test.to_csv(f'{self.output_dir}/{self.output_name}_test.csv', index=False)
