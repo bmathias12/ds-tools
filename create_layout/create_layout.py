@@ -54,6 +54,7 @@ def main():
             # Check if the column is a float, assign DECIMAL
             else:
                 length = len(str(df[col].astype('float').max().astype('int')))
+                length = length + 2
                 layout[col] = f'DECIMAL({length}, 2)'
 
 
