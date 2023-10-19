@@ -1,7 +1,7 @@
 import pandas as pd
 import pytest
 
-from src.app import is_integer_series, is_string_series, is_float_series
+from src.app import is_integer_series, is_string_series
 
 def test_is_integer_series():
     # Test a series of integers
