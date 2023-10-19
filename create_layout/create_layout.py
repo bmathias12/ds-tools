@@ -85,7 +85,7 @@ def main():
     # Write the layout to the output file
     with open(args.output_path, 'w') as f:
         for col, col_type in layout.items():
-            f.write(f'{col} {col_type}\n')
+            f.write(f'{col} {col_type},\n')
         
 
 if __name__ == '__main__':
