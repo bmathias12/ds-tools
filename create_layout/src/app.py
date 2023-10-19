@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 
+
 def is_integer_series(series):
     """Check if a series is an integer series"""
     mask = series.astype('float').dropna().astype(int) == series.astype('float').dropna()
@@ -13,6 +14,11 @@ def is_string_series(series):
         return False
     except ValueError:
         return True
+    
+# def is_float_series(series):
+#     """Check if a series is a float series"""
+#     mask = series.astype('float').dropna().astype(int) != series.astype('float').dropna()
+#     return mask.all()
 
 
 if __name__ == "__main__":
