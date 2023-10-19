@@ -1,6 +1,7 @@
 # Custom
 .DS_Store
 *scrub*
+create_layout.sh
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
