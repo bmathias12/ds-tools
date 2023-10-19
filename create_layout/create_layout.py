@@ -38,17 +38,27 @@ def main():
             max_length = df[col].apply(lambda x: len(str(x))).max()
             layout[col] = f'VARCHAR({max_length})'
         
-        # Check if the column is an integer
-        if is_integer_series(df[col]):
-            length = len(str(df[col].astype(float).max().astype(int)))
-            if length < 6:
-                layout[col] = 'SMALLINT'
-            elif length < 11:
-                layout[col] = 'INTEGER'
-            else:
-                layout[col] = 'BIGINT'
+        # Check if the column is numeric
+        else:
 
-        # Check if the column is a float
+            # Check if the column is an integer, assign SMALLINT, INTEGER, or BIGINT
+            if is_integer_series(df[col]):
+                length = len(str(df[col].astype(float).max().astype(int)))
+                if length < 6:
+                    layout[col] = 'SMALLINT'
+                elif length < 11:
+                    layout[col] = 'INTEGER'
+                else:
+                    layout[col] = 'BIGINT'
+
+            # Check if the column is a float, assign DECIMAL
+            else:
+                # Calculate the max number of digits before the decimal
+                max_digits = df[col].apply(lambda x: len(str(x).split('.')[0])).max()
+                # Calculate the max number of digits after the decimal
+                max_decimal = df[col].apply(lambda x: len(str(x).split('.')[1])).max()
+                layout[col] = f'DECIMAL({max_digits}, {max_decimal})'
+
 
     # If the output file already exists, fail instead of delete since arbitrary 
     # output location could have been entered
