@@ -1,3 +1,22 @@
+"""Utility for creating a layout file for a dataset.
+
+
+Usage:
+    python create_layout.py --data_path <path_to_data> --output_path <path_to_output> --id_cols <id_cols> --delimiter <delimiter>
+
+Example:
+    python create_layout.py \
+        --data_path data/iris.csv \
+        --output_path layout.txt \
+        --id_cols 'id' 'zip_code' \
+        --delimiter ','
+
+Notes:
+    You may need to manually adjust the layout file after it is created. For example,
+    if a column is assigned as DECIMAL(5, 2) since it always assumes 2 decimal places,
+    but the data has greater precision, you will need to manually adjust the layout.
+"""
+
 import argparse
 import os
 
