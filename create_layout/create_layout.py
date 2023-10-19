@@ -53,11 +53,8 @@ def main():
 
             # Check if the column is a float, assign DECIMAL
             else:
-                # Calculate the max number of digits before the decimal
-                max_digits = df[col].apply(lambda x: len(str(x).split('.')[0])).max()
-                # Calculate the max number of digits after the decimal
-                max_decimal = df[col].apply(lambda x: len(str(x).split('.')[1])).max()
-                layout[col] = f'DECIMAL({max_digits}, {max_decimal})'
+                length = len(str(df[col].astype('float').max().astype('int')))
+                layout[col] = f'DECIMAL({length}, 2)'
 
 
     # If the output file already exists, fail instead of delete since arbitrary 

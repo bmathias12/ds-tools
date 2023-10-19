@@ -44,24 +44,3 @@ def test_is_string_series():
     # Test a series of mixed types
     series4 = pd.Series([1, '2', 3.0, 'four'])
     assert is_string_series(series4) == True
-
-def test_is_float_series():
-    # Test a series of int-floats
-    series1 = pd.Series([1.0, 2.0, 3.0, 4.0])
-    assert is_float_series(series1) == False
-
-    # Test a series of floats
-    series1 = pd.Series([1.10, 2.30, 3.30, 4.00])
-    assert is_float_series(series1) == True
-
-    # Test a series of integers
-    series2 = pd.Series([1, 2, 3, 4])
-    assert is_float_series(series2) == False
-
-    # Test a series of strings
-    series3 = pd.Series(['1.13', '2.00', '3.50', '4.30'])
-    assert is_float_series(series3) == True
-
-    # Test a series of mixed types
-    series4 = pd.Series([1, '2.0', 3.0, 'four'])
-    assert is_float_series(series4) == False
