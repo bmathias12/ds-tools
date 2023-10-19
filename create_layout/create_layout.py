@@ -40,13 +40,15 @@ def main():
         
         # Check if the column is an integer
         if is_integer_series(df[col]):
-            length = len(str(df[col].max().astype(int)))
+            length = len(str(df[col].astype(float).max().astype(int)))
             if length < 6:
                 layout[col] = 'SMALLINT'
             elif length < 11:
                 layout[col] = 'INTEGER'
             else:
                 layout[col] = 'BIGINT'
+
+        # Check if the column is a float
 
     # If the output file already exists, fail instead of delete since arbitrary 
     # output location could have been entered
