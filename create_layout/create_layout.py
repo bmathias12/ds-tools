@@ -70,11 +70,9 @@ def main():
                 else:
                     layout[col] = 'BIGINT'
 
-            # Check if the column is a float, assign DECIMAL
+            # Check if the column is a float, assign FLOAT
             else:
-                length = len(str(df[col].astype('float').max().astype('int')))
-                length = length + 2
-                layout[col] = f'DECIMAL({length}, 2)'
+                layout[col] = 'FLOAT'
 
 
     # If the output file already exists, fail instead of delete since arbitrary 
